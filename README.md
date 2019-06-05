@@ -34,7 +34,7 @@ stage(s) steps from memory if possible and re-visit their detailed instructions
 if you get lost. Files containing the solution can be found on the `solution`
 branch.
 
-## Live Example: TODO: add live example
+## Live Example: https://boomcamp.github.io/react-2
 
 ## Setup
 
