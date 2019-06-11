@@ -1,6 +1,6 @@
 # Project Summary
 
-Inthisproject we will take a look at an employee management application and
+In this project we will take a look at an employee management application and
 learn how it works. We will cover the following topics, found below in the list,
 by going through each project stage and building out a part of the application.
 
