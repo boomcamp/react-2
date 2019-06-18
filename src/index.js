@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './stage-10/App';
+import App from './stage-1/App';
 
 import './index.css';
 
