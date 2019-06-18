@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   refresh() {
+    console.log(this)
     this.setState(this.state);
   }
 
