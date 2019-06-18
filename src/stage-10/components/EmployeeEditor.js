@@ -1,44 +1,34 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 class EmployeeEditor extends Component {
   constructor() {
     super();
     this.state = {
       employee: null,
       originalEmployee: null,
-      notModified: true,
+      notModified: true
     };
     this.save = this.save.bind(this);
     this.cancel = this.cancel.bind(this);
   }
-
-  // componentWillReceiveProps
-
   componentDidUpdate(prevProps) {
-
-    // checking this condition so we don't update unless there was a change.
-    // if we don't do this we could cause an infinite loop.
     if (prevProps.selected !== this.props.selected) {
       this.setState({
         employee: Object.assign({}, this.props.selected),
         originalEmployee: this.props.selected,
         notModified: true
-        });
+      });
     }
   }
-  handleChange(prop, value){
-    if ( this.state.notModified ) {
-      this.setState({ notModified: false })
+  handleChange(prop, value) {
+    if (this.state.notModified) {
+      this.setState({ notModified: false });
     }
-  
+
     var employeeCopy = Object.assign({}, this.state.employee);
     employeeCopy[prop] = value;
     this.setState({ employee: employeeCopy });
-  
   }
-  
 
- 
   save() {
     this.state.originalEmployee.updateName(this.state.employee.name);
     this.state.originalEmployee.updatePhone(this.state.employee.phone);
@@ -46,8 +36,6 @@ class EmployeeEditor extends Component {
     this.setState({ notModified: true });
     this.props.refreshList();
   }
-  
-
 
   cancel() {
     this.setState({
@@ -55,14 +43,6 @@ class EmployeeEditor extends Component {
       notModified: true
     });
   }
-
-  // componentWillReceiveProps
-
-  // handleChange
-
-  // save
-
-  // cancel
 
   render() {
     return (
@@ -78,16 +58,16 @@ class EmployeeEditor extends Component {
               disabled={this.state.notModified}
               onClick={this.save}
             >
-              {' '}
-              Save{' '}
+              {" "}
+              Save{" "}
             </button>
             <button
               className="neutralButton"
               disabled={this.state.notModified}
               onClick={this.cancel}
             >
-              {' '}
-              Cancel{' '}
+              {" "}
+              Cancel{" "}
             </button>
             <br />
             <span className="placeholderText"> Name </span>
@@ -95,7 +75,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.name}
               onChange={e => {
-                this.handleChange('name', e.target.value);
+                this.handleChange("name", e.target.value);
               }}
             />
             <span className="placeholderText"> Phone Number </span>
@@ -103,7 +83,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.phone}
               onChange={e => {
-                this.handleChange('phone', e.target.value);
+                this.handleChange("phone", e.target.value);
               }}
             />
             <span className="placeholderText"> Title </span>
@@ -111,7 +91,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.title}
               onChange={e => {
-                this.handleChange('title', e.target.value);
+                this.handleChange("title", e.target.value);
               }}
             />
           </div>
