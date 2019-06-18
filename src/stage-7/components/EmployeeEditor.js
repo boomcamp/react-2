@@ -2,14 +2,60 @@ import React, { Component } from 'react';
 
 class EmployeeEditor extends Component {
   // constructor
+  constructor(){
+    super();
+    this.state = {
+      employee: null,
+      originalEmployee: null,
+      notModified: true,
+    }
+    this.save = this.save.bind(this)
+    this.cancel = this.cancel.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+
+    // checking this condition so we don't update unless there was a change.
+    // if we don't do this we could cause an infinite loop.
+    if (prevProps.selected !== this.props.selected) {
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+        });
+    }
+  }
 
   // componentWillReceiveProps
-
+  componentWillReceiveProps(props) {
+    this.setState({
+      employee: Object.assign({}, props.selected),
+      originalEmployee: props.selected,
+    });
+  }
   // handleChange
+  handleChange(prop, val) {
+    if (this.state.notModified) {
+      this.setState({ notModified: false });
+    }
 
+    var employeeCopy = Object.assign({}, this.state.employee);
+    employeeCopy[prop] = val;
+    this.setState({ employee: employeeCopy });
+  }
   // save
-
+  save() {
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updatePhone(this.state.employee.phone);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
+    this.setState({ notModified: true });
+    this.props.refreshList();
+  }
   // cancel
+  cancel() {
+    var employeeCopy = Object.assign({}, this.state.originalEmployee);
+    this.setState({ employee: employeeCopy, notModified: true });
+  }
 
   render() {
     return (
