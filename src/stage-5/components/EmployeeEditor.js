@@ -8,15 +8,53 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true,
     };
+    this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   // componentWillReceiveProps
+  componentDidUpdate(prevProps) {
+
+    // checking this condition so we don't update unless there was a change.
+    // if we don't do this we could cause an infinite loop.
+    if (prevProps.selected !== this.props.selected) {
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+        });
+    }
+  }
 
   // handleChange
+  handleChange(propName, val) {
+    if ( this.state.notModified ) {
+      this.setState({ notModified: false })
+    }
+  
+    var employeeCopy = Object.assign({}, this.state.employee);
+    employeeCopy[propName] = val;
+    this.setState({ employee: employeeCopy });
+  
+    // remember, we never directly modify state, it's always updated through the '.setState' method
+    // this is how React can perform the update in a consistent way.
+  }
 
-  // save
+  //save
+  save() {
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updatePhone(this.state.employee.phone);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
+    this.setState({ notModified: true });
+    this.props.refreshList();
+  }
 
-  // cancel
+  cancel() {
+    this.setState({
+      employee: Object.assign({}, this.props.selected),
+      notModified: true
+    });
+  }
 
   render() {
     return (
