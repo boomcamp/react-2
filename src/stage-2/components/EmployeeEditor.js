@@ -8,9 +8,24 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true,
     };
+
+    this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   // componentWillReceiveProps
+  componentDidUpdate(prevProps) {
+
+    // checking this condition so we don't update unless there was a change.
+    // if we don't do this we could cause an infinite loop.
+    if (prevProps.selected !== this.props.selected) {
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+        });
+    }
+  }
 
   handleChange(prop, val) {
     if (this.state.notModified) {
