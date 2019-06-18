@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 class EmployeeEditor extends Component {
-  constructor() {
+   constructor() {
     super();
     this.state = {
       employee: null,
@@ -12,7 +12,7 @@ class EmployeeEditor extends Component {
     this.cancel = this.cancel.bind(this);
   }
 
-  // componentWillReceiveProps
+
   componentDidUpdate (prevProps){
     if (prevProps.selected !== this.props.selected){
        this.setState({
@@ -23,7 +23,6 @@ class EmployeeEditor extends Component {
     }
   }
 
-  // handleChange
   handleChange(propName, val){
     if (this.state.notModified){
       this.setState({notModified: false})
@@ -34,7 +33,6 @@ class EmployeeEditor extends Component {
   }
 
 
-  // save
   save() {
     this.state.originalEmployee.updateName(this.state.employee.name);
     this.state.originalEmployee.updatePhone(this.state.employee.phone);
@@ -42,10 +40,9 @@ class EmployeeEditor extends Component {
     this.setState({ notModified: true });
     this.props.refreshList();
   }
-  
 
-  // cancel
-  cancel() {
+  
+cancel() {
     this.setState({
       employee: Object.assign({}, this.props.selected),
       notModified: true

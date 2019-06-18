@@ -33,7 +33,10 @@ class App extends Component {
         new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager'),
       ],
       selectedEmployee: null,
-    };
+    }
+    this.selectEmployee = this.selectEmployee.bind(this);
+    this.refresh = this.refresh.bind(this);
+  
   }
 
   selectEmployee(employee) {
