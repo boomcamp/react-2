@@ -34,11 +34,21 @@ class App extends Component {
       ],
       selectedEmployee: null,
     };
+
+    this.selectEmployee = this.selectEmployee.bind(this);
+    this.refresh = this.refresh.bind(this);
   }
 
   // selectEmployee
+  selectEmployee(employee) {
+    console.log(this);
+    this.setState({ selectedEmployee: employee });
+  }
 
   // refresh
+  refresh() {
+    this.setState(this.state);
+  }
 
   render() {
     return (
