@@ -8,17 +8,20 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true,
     };
-    this.save = this.save.bind(this);
-    this.cancel = this.cancel.bind(this);
+    this.save=this.save.bind(this);
+    this.cancel=this.cancel.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    this.setState({
-      employee: Object.assign({}, props.selected),
-      originalEmployee: props.selected,
-    });
+  componentDidUpdate(prevProps) {
+    if (prevProps.selected !== this.props.selected) {
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+        });
+    }
   }
-
+ 
   handleChange(prop, val) {
     if (this.state.notModified) {
       this.setState({ notModified: false });
@@ -36,7 +39,7 @@ class EmployeeEditor extends Component {
     this.setState({ notModified: true });
     this.props.refreshList();
   }
-
+ 
   cancel() {
     var employeeCopy = Object.assign({}, this.state.originalEmployee);
     this.setState({ employee: employeeCopy, notModified: true });

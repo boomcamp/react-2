@@ -5,8 +5,6 @@ class EmployeeList extends Component {
     return (
       <div>
         <ul className="listContainer">
-        
-            // Map over this.props.employees
              {this.props.employees.map(employee => {
             return (
               <li
@@ -21,7 +19,6 @@ class EmployeeList extends Component {
               </li>
             );
           })}
-      
         </ul>
       </div>
     );
