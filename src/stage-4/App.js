@@ -14,7 +14,7 @@ class App extends Component {
         new Employee(0, 'Bernice Ortiz', 4824931093, 'CEO'),
         new Employee(1, 'Marnie Barnett', 3094812387, 'CTO'),
         new Employee(2, 'Phillip Weaver', 7459831843, 'Manager'),
-        new Employee(
+        new Employee( 
           3,
           'Teresa Osborne',
           3841238745,
@@ -34,7 +34,10 @@ class App extends Component {
       ],
       selectedEmployee: null,
     };
-  }
+    this.selectEmployee = this.selectEmployee.bind(this);
+    this.refresh = this.refresh.bind(this);
+  } 
+
 
   selectEmployee(employee) {
     this.setState({ selectedEmployee: employee });
