@@ -18,8 +18,7 @@ class EmployeeList extends Component {
                 {employee.name}{' '}
               </li>
             );
-          })
-          }
+          })}
         </ul>
       </div>
     );
