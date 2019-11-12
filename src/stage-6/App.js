@@ -21,12 +21,7 @@ class App extends Component {
           'Director of Engineering'
         ),
         new Employee(4, 'Dollie Berry', 4873459812, 'Front-End Developer'),
-        new Employee(
-          5,
-          'Harriett Williamson',
-          6571249801,
-          'Front-End Developer'
-        ),
+        new Employee(5,'Harriett Williamson',6571249801,'Front-End Developer'),
         new Employee(6, 'Ruby Estrada', 5740923478, 'Back-End Developer'),
         new Employee(7, 'Lou White', 8727813498, 'Full-Stack Developer'),
         new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'),
