@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { isTSAnyKeyword } from '@babel/types';
 
 class EmployeeEditor extends Component {
   constructor() {
@@ -8,15 +9,44 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true,
     };
+    this.save = this.save.bind(this)
+    this.cancel = this.cancel.bind(this)
   }
 
-  // componentWillReceiveProps
+  componentDidUpdate(prevProps){
+    if(prevProps.selected !== this.props.selected){
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+      })
+    }
+  }
 
-  // handleChange
+  handleChange(propName, val){
+    if(this.state.notModified){
+      this.setState({notModified:false})
+    }
 
-  // save
+    var employeeCopy = Object.assign({}, this.state.employee)
+    employeeCopy[propName] = val;
+    this.setState({employee: employeeCopy})
+  }
 
-  // cancel
+  save(){
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updatePhone(this.state.employee.phone);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
+    this.setState({notModified:true});
+    this.props.refreshList();
+  }
+
+  cancel(){
+    this.setState({
+      employee: Object.assign({}, this.props.selected),
+      notModified: true
+    })
+  }
 
   render() {
     return (
