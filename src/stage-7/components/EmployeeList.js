@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class EmployeeList extends Component {
   render() {
@@ -14,8 +14,8 @@ class EmployeeList extends Component {
                   this.props.selectEmployee(employee);
                 }}
               >
-                {' '}
-                {employee.name}{' '}
+                {" "}
+                {employee.name}{" "}
               </li>
             );
           })}
