@@ -29,7 +29,7 @@ class App extends Component {
     this.refresh = this.refresh.bind(this);
   }
 
-  selectEmployee() {
+  selectEmployee(employee) {
     this.setState({ selectEmployee: employee });
   }
 

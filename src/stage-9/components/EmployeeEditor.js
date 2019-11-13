@@ -15,7 +15,7 @@ class EmployeeEditor extends Component {
   componentDidUpdate(prevProps) {
     if (prevProps.selected !== this.props.selected) {
       this.setState({
-        employee: Object.assign({}, this.props.selected);
+        employee: Object.assign({}, this.props.selected),
         originalEmployee: this.props.selected,
         notModified: true
       })
@@ -32,9 +32,9 @@ class EmployeeEditor extends Component {
   }
 
   save() {
-    this.state.originalEmployee.updateName(this.employee.name);
-    this.state.originalEmployee.updatePhone(this.employee.phone);
-    this.state.originalEmployee.updateTitle(this.employee.title);
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updatePhone(this.state.employee.phone);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
     this.setState({ notModified: true });
     this.props.refreshList();
   }
