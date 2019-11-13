@@ -14,8 +14,7 @@ class EmployeeList extends Component {
                            this.props.selectEmployee(employee);
                         }}
                      >
-                        {" "}
-                        {employee.name}{" "}
+                        {employee.name}
                      </li>
                   );
                })}

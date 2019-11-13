@@ -8,12 +8,9 @@ class EmployeeEditor extends Component {
          originalEmployee: null,
          notModified: true
       };
-
       this.save = this.save.bind(this);
       this.cancel = this.cancel.bind(this);
    }
-
-   // componentWillReceiveProps
 
    componentDidUpdate(prevProps) {
       if (prevProps.selected !== this.props.selected) {
@@ -24,7 +21,6 @@ class EmployeeEditor extends Component {
          });
       }
    }
-   // handleChange
 
    handleChange(propName, val) {
       if (this.state.notModified) {
@@ -36,8 +32,6 @@ class EmployeeEditor extends Component {
       this.setState({ employee: employeeCopy });
    }
 
-   // save
-
    save() {
       this.state.originalEmployee.updateName(this.state.employee.name);
       this.state.originalEmployee.updatePhone(this.state.employee.phone);
@@ -45,8 +39,6 @@ class EmployeeEditor extends Component {
       this.setState({ notModified: true });
       this.props.refreshList();
    }
-
-   // cancel
 
    cancel() {
       this.setState({
@@ -64,15 +56,13 @@ class EmployeeEditor extends Component {
                   <p id="employeeTitle"> {this.state.originalEmployee.name} </p>
                   <br />
                   <button id="saveBtn" className="confirmationButton" disabled={this.state.notModified} onClick={this.save}>
-                     {" "}
-                     Save{" "}
+                     Save
                   </button>
                   <button className="neutralButton" disabled={this.state.notModified} onClick={this.cancel}>
-                     {" "}
-                     Cancel{" "}
+                     Cancel
                   </button>
                   <br />
-                  <span className="placeholderText"> Name </span>
+                  <span className="placeholderText"> Name</span>
                   <input
                      className="materialInput"
                      value={this.state.employee.name}
@@ -80,6 +70,7 @@ class EmployeeEditor extends Component {
                         this.handleChange("name", e.target.value);
                      }}
                   />
+
                   <span className="placeholderText"> Phone Number </span>
                   <input
                      className="materialInput"
@@ -88,6 +79,7 @@ class EmployeeEditor extends Component {
                         this.handleChange("phone", e.target.value);
                      }}
                   />
+
                   <span className="placeholderText"> Title </span>
                   <input
                      className="materialInput"
@@ -98,7 +90,7 @@ class EmployeeEditor extends Component {
                   />
                </div>
             ) : (
-               <p id="noEmployee"> No Employee Selected </p>
+               <p id="noEmployee"> No Employee Selected</p>
             )}
          </div>
       );
