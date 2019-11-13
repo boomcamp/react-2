@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class EmployeeEditor extends Component {
   constructor() {
@@ -6,11 +6,23 @@ class EmployeeEditor extends Component {
     this.state = {
       employee: null,
       originalEmployee: null,
-      notModified: true,
+      notModified: true
     };
+
+    this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   // componentWillReceiveProps
+  componentDidUpdate(prevProps) {
+    if (prevProps.selected !== this.props.selected) {
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+      });
+    }
+  }
 
   handleChange(prop, val) {
     if (this.state.notModified) {
@@ -49,16 +61,16 @@ class EmployeeEditor extends Component {
               disabled={this.state.notModified}
               onClick={this.save}
             >
-              {' '}
-              Save{' '}
+              {" "}
+              Save{" "}
             </button>
             <button
               className="neutralButton"
               disabled={this.state.notModified}
               onClick={this.cancel}
             >
-              {' '}
-              Cancel{' '}
+              {" "}
+              Cancel{" "}
             </button>
             <br />
             <span className="placeholderText"> Name </span>
@@ -66,7 +78,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.name}
               onChange={e => {
-                this.handleChange('name', e.target.value);
+                this.handleChange("name", e.target.value);
               }}
             />
             <span className="placeholderText"> Phone Number </span>
@@ -74,7 +86,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.phone}
               onChange={e => {
-                this.handleChange('phone', e.target.value);
+                this.handleChange("phone", e.target.value);
               }}
             />
             <span className="placeholderText"> Title </span>
@@ -82,7 +94,7 @@ class EmployeeEditor extends Component {
               className="materialInput"
               value={this.state.employee.title}
               onChange={e => {
-                this.handleChange('title', e.target.value);
+                this.handleChange("title", e.target.value);
               }}
             />
           </div>
