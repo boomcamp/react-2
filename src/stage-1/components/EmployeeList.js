@@ -11,6 +11,7 @@ class EmployeeList extends Component {
                 className="listText"
                 key={employee.id}
                 onClick={() => {
+                 
                   this.props.selectEmployee(employee);
                 }}
               >
