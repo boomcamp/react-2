@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 import Employee from './models/Employee';
 
-//components
-import EmployeeList from './components/EmployeeList';
-import EmployeeEditor from './components/EmployeeEditor';
+// components
+import EmployeeEditor from './components/EmployeeEditor'
+import EmployeeList from './components/EmployeeList'
 import Header from './components/Header';
 
 class App extends Component {
@@ -23,18 +23,18 @@ class App extends Component {
         new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'),
         new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager'),
       ],
-      selectedEmployee: null,
+      selectedEmployee: null
     };
     this.selectEmployee = this.selectEmployee.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
   selectEmployee(employee) {
-    this.setState({ selectEmployee: employee });
+    this.setState({ selectedEmployee: employee })
   }
 
   refresh() {
-    this.setState(this.state);
+    this.setState(this.state)
   }
 
   render() {

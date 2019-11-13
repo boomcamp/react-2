@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import EmployeeList from '../../stage-8/components/EmployeeList';
 
 class EmployeeEditor extends Component {
   constructor() {
@@ -28,13 +29,13 @@ class EmployeeEditor extends Component {
     }
     var employeeCopy = Object.assign({}, this.state.employee);
     employeeCopy[propName] = val;
-    this.setState({ employee: employeeCopy })
+    this.setState({ employee: employeeCopy });
   }
 
   save() {
-    this.state.originalEmployee.name.updateName(this.employee.name);
-    this.state.originalEmployee.phone.updatePhone(this.employee.phone);
-    this.state.originalEmployee.title.updateTitle(this.employee.title);
+    this.state.originalEmployee.updateName(this.state.employee.name);
+    this.state.originalEmployee.updatePhone(this.state.employee.phone);
+    this.state.originalEmployee.updateTitle(this.state.employee.title);
     this.setState({ notModified: true });
     this.props.refreshList();
   }
@@ -42,7 +43,7 @@ class EmployeeEditor extends Component {
   cancel() {
     this.setState({
       employee: Object.assign({}, this.props.selected),
-      notModified: true
+      notModified: true,
     })
   }
 
@@ -103,6 +104,8 @@ class EmployeeEditor extends Component {
       </div>
     );
   }
+
+
 }
 
 export default EmployeeEditor;

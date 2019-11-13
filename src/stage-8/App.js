@@ -5,14 +5,13 @@ import Employee from './models/Employee';
 // components
 import EmployeeEditor from './components/EmployeeEditor'
 import EmployeeList from './components/EmployeeList'
-import Header from './components/Header'
-
+import Header from './components/Header';
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      employee: [
+      employees: [
         new Employee(0, 'Bernice Ortiz', 4824931093, 'CEO'),
         new Employee(1, 'Marnie Barnett', 3094812387, 'CTO'),
         new Employee(2, 'Phillip Weaver', 7459831843, 'Manager'),
@@ -24,14 +23,14 @@ class App extends Component {
         new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'),
         new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager'),
       ],
-      selectedEmployee: null,
+      selectedEmployee: null
     };
     this.selectEmployee = this.selectEmployee.bind(this);
     this.refresh = this.refresh.bind(this);
   }
 
   selectEmployee(employee) {
-    this.setState({ selectEmployee: employee })
+    this.setState({ selectedEmployee: employee })
   }
 
   refresh() {
