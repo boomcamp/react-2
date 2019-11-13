@@ -13,7 +13,6 @@ class EmployeeEditor extends Component {
     this.cancel = this.cancel.bind(this);
   }
 
-  // componentWillReceiveProps
   componentDidUpdate(prevProps) {
     if (prevProps.selected !== this.props.selected) {
       this.setState({
@@ -24,7 +23,6 @@ class EmployeeEditor extends Component {
     }
   }
 
-  // handleChange
   handleChange(propName, val) {
     if (this.state.notModified) {
       this.setState({ notModified: false });
@@ -35,7 +33,6 @@ class EmployeeEditor extends Component {
     this.setState({ employee: employeeCopy });
   }
 
-  // save
   save() {
     this.state.originalEmployee.updateName(this.state.employee.name);
     this.state.originalEmployee.updatePhone(this.state.employee.phone);
@@ -44,7 +41,6 @@ class EmployeeEditor extends Component {
     this.props.refreshList();
   }
 
-  // cancel
   cancel() {
     this.setState({
       employee: Object.assign({}, this.props.selected),
