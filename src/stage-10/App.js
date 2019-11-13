@@ -17,7 +17,7 @@ class App extends Component {
       <div id="app">
         <Header />
         <div className="main-container">
-          // render EmployeeList here // render EmployeeEditor here
+        // render EmployeeList here // render EmployeeEditor here
         </div>
       </div>
     );

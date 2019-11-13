@@ -15,7 +15,11 @@ class EmployeeEditor extends Component {
   // componentWillReceiveProps
   componentDidUpdate(prevProps) {
     if (prevProps.selected !== this.props.selected) {
-
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+        notModified: true
+      });
     }
   }
 
@@ -24,6 +28,9 @@ class EmployeeEditor extends Component {
     if (this.state.notModified) {
       this.setState({ notModified: false })
     }
+    var employeeCopy = Object.assign({}, this.state.employee);
+    employeeCopy[propName] = val;
+    this.setState({ employee: employeeCopy });
 
   }
 
@@ -38,7 +45,10 @@ class EmployeeEditor extends Component {
 
   // cancel
   cancel() {
-
+    this.setState({
+      employee: Object.assign({}, this.props.selected),
+      notModified: true
+    });
   }
 
   render() {

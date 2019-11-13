@@ -31,7 +31,8 @@ class App extends Component {
         new Employee(7, 'Lou White', 8727813498, 'Full-Stack Developer'),
         new Employee(8, 'Eve Sparks', 8734567810, 'Product Manager'),
         new Employee(9, 'Lois Brewer', 8749823456, 'Sales Manager'),
-      ]
+      ],
+      selectedEmployee: null,
     };
     this.selectEmployee = this.selectEmployee.bind(this);
     this.refresh = this.refresh.bind(this);
@@ -39,12 +40,12 @@ class App extends Component {
 
   // selectEmployee
   selectEmployee(employee) {
-    this.setState({ selectEmployee: employee });
+    this.setState({ selectedEmployee: employee });
   }
 
   // refresh
   refresh() {
-    this.setState(this.state)
+    this.setState(this.state);
   }
 
   render() {

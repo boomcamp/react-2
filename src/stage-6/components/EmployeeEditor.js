@@ -43,7 +43,10 @@ class EmployeeEditor extends Component {
 
   // cancel
   cancel() {
-    this.setState({ employee: Object.assign({}, this.props.selected), notModified: true })
+    this.setState({
+      employee: Object.assign({}, this.props.selected),
+      notModified: true
+    })
   }
 
   render() {
