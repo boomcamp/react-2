@@ -15,6 +15,8 @@ class EmployeeEditor extends Component {
       employee: Object.assign({}, props.selected),
       originalEmployee: props.selected,
     });
+    this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   handleChange(prop, val) {
