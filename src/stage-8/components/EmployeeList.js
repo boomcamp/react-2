@@ -5,7 +5,8 @@ class EmployeeList extends Component {
     return (
       <div>
         <ul className="listContainer">
-          {this.props.employees.map(employee => {
+          {
+            this.props.employees.map(employee => {
             return (
               <li
                 className="listText"
