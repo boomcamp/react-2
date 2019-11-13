@@ -8,6 +8,8 @@ class EmployeeEditor extends Component {
       originalEmployee: null,
       notModified: true,
     };
+    this.save = this.save.bind(this);
+    this.cancel = this.cancel.bind(this);
   }
 
   componentWillReceiveProps(props) {
@@ -92,8 +94,8 @@ class EmployeeEditor extends Component {
             />
           </div>
         ) : (
-          <p id="noEmployee"> No Employee Selected </p>
-        )}
+            <p id="noEmployee"> No Employee Selected </p>
+          )}
       </div>
     );
   }
