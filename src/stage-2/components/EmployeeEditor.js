@@ -13,12 +13,14 @@ class EmployeeEditor extends Component {
   }
 
   // componentWillReceiveProps
-  componentWillReceiveProps(props) {
-    this.setState({
-      employee: Object.assign({}, props.selected),
-      originalEmployee: props.selected,
-    });
-  }  
+  componentDidUpdate(prevProps){
+    if(this.props.selected !== prevProps.selected){
+      this.setState({
+        employee: Object.assign({}, this.props.selected),
+        originalEmployee: this.props.selected,
+      })
+    }
+  }
   handleChange(prop, val) {
     if (this.state.notModified) {
       this.setState({ notModified: false });
